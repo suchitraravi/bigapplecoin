@@ -1,0 +1,456 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Raleway', sans-serif;
+        }
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+            cursor: pointer;
+        }
+        tr {
+            text-align: left;
+            padding-right: 10px;
+        }
+
+        .fa {
+            color: white;
+            background-color: #292655;
+            border-radius: 15px;
+            padding: 3px;
+        }
+
+        #applelogo {
+            position: relative;
+            padding-left: 550px;
+            margin-top: -82px;
+            height: 130px;
+        }
+
+        #headline {
+            color: white;
+            padding: 0px !important;
+            font-size: x-large;
+            margin-top: -60px;
+        }
+
+        #rewardTitle {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 50px;
+        }
+
+        .rewardbtn {
+            border-radius: 10px;
+            padding: 8px;
+            background-color: transparent;
+            box-shadow: 2px 2px 1px 0px darkgrey;
+            font-size: large;
+            width: 250px;
+            margin-bottom: 5px;
+
+            /* float: left; */
+            text-align: left;
+        }
+
+        #utilityTitle {
+            color: #292655;
+            font-weight: bold;
+            font-size: 50px;
+        }
+
+        hr {
+            border-top: 2px solid #292655;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+        #footerimg {
+            width: 100%;
+            margin-top: -11px;
+        }
+
+        #learnmore {
+            margin-right: -225px;
+            border-radius: 13px;
+            background-color: #ffffff;
+            color: #292655;
+            border-color: #292655;
+            padding: 10px;
+            width: 150px;
+            font-weight: bolder;
+            font-size: unset;
+        }
+
+        #rewardandutility {
+            background-color: whitesmoke;
+        }
+
+        #rewards {
+            position: relative;
+            padding-left: 10%;
+            color: #ffffff;
+            text-align: -webkit-center;
+            margin-left: -70%;
+
+        }
+
+        #utility {
+            padding-left: 55%;
+            padding-bottom: 50px;
+            color: #292655;
+        }
+
+        h1 {
+            color: white;
+            font-stretch: ultra-expanded;
+            font-weight: unset;
+            font-size: -webkit-xxx-large;
+            letter-spacing: 2px;
+        }
+
+        #rewardh2 {
+            font-weight: 500;
+            margin-top: -20px;
+            font-size: xx-large;
+        }
+
+        #bgimg {
+            width: 100%;
+            margin-top: -170px;
+            margin-bottom: -200px;
+
+        }
+
+        #citizen {
+            padding: 8px;
+            border-color: white;
+            background: #292655;
+            border-radius: 25px 0px 0px 25px;
+            color: white;
+            width: 225px;
+            height: 45px;
+            font-size: larger;
+
+        }
+
+        #vendor {
+            padding: 8px;
+            background: whitesmoke;
+            border-radius: 0px 25px 25px 0px;
+            color: #292655;
+            /* border: 1px; */
+            border-color: whitesmoke;
+            margin-left: -5px;
+            width: 225px;
+            height: 45px;
+            font-size: larger;
+        }
+
+        #signin {
+            border-radius: 25px;
+            background-color: transparent;
+            color: white;
+            border-color: whitesmoke;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 100px;
+            height: 35px;
+        }
+
+        .topnav {
+            overflow: hidden;
+            position: fixed;
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: #000000;
+            text-align: center;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .active {
+            background-color: lightgrey;
+            color: white;
+        }
+
+        .topnav .icon {
+            display: none;
+        }
+
+        #footersupport {
+            color: #292655;
+            float: right;
+            position: relative;
+        }
+        .fa-bars{
+            background-color: white;
+            color: #292655;
+        }
+        @media screen and (max-width: 600px) {
+            .topnav a:not(:first-child) {
+                display: none;
+            }
+
+            .topnav a.icon {
+                float: right;
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .topnav.responsive {
+                position: relative;
+            }
+
+            .topnav.responsive .icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            .topnav.responsive a {
+                float: unset !important;
+                display: block;
+                text-align: left;
+            }
+        }
+    </style>
+    <script>
+        $(function () {
+            $('#loginbtn').click(function() {
+                if($('#username').val() == 'jondoe' && $('#password').val() == 'pass123'){
+                    $('#errormsg').css(
+                        'display','none'
+                    )
+                    localStorage.setItem("login",'yes');
+                    $('#modalLoginForm').css('display','none');
+                    $('.modal-backdrop.in').css('display','none');                     
+                    window.location.reload();                     
+
+                }
+                else{
+                    $('#errormsg').css(
+                        'display','block'
+                    )
+                }
+            })
+        })
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+        function transactionClick(elem){
+            if(localStorage.login == "yes"){
+                if(elem.text == "Wallet"){
+                    window.location.href = 'transaction.html';
+                } else{
+                    window.location.href = 'profile-setting.html';
+                }
+                
+            } else{
+                alert("Please login to view the Wallet and Settings")
+            }
+        }
+        
+    </script>
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <a style="width: 150px;color: #292655;font-size: x-large;font-weight: 500;padding-bottom: unset;padding-top: 5px;" href="bigapple.html">NYC</a>
+        <a href="vendor-reg.html">Registration</a>
+        <a href="reward.html" class="active">Reward</a>
+        <a href="utility.html">Utility</a>
+        <a onclick="transactionClick(this)">Wallet</a>
+        <a style="float:right;padding-bottom: 0px;" href="" data-toggle="modal" data-target="#modalLoginForm"><img
+                width="50px" src="login.png" /></a>
+        <a style="float:right;opacity:0.5;" onclick="return false;" href="#chat"><i style="background-color: white;color: #292655;"
+                class="fa fa-comments" aria-hidden="true"></i></a>
+        <a style="float:right" onclick="transactionClick(this)"><i style="background-color: white;color: #292655;"
+                class="fa fa-cogs" aria-hidden="true"></i></a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+
+    </div>
+    <div style="padding-bottom: 50px; background-color: lightgrey;">
+    </div>
+    <div>
+        <div id="rewards">
+
+            <h1 style="margin-block-start: 0em;" id="rewardTitle">Rewards</h1>
+            <h2 id='rewardh2'>Create a Reward/Loyalty coin for <br /> use by NYC Government.</h2>
+            <a href="#how-it-works"><button id="learnmore">Learn more &nbsp;<i style="color: #292655; background-color:transparent;"
+                        class="fa fa-caret-right"></i></button></a>
+
+        </div>
+        <img id="bgimg" src="Utility Page_Shape.png" />
+    </div>
+    <div id="how-it-works">
+        <div style="float:left; position:relative;margin-left: 5%;margin-top: 12%;">
+            <table>
+                <th style="text-align: center;font-size: xx-large;color: #292655;">
+                    Rewards
+                </th>
+                <tr>
+                    <td><button disabled class='rewardbtn'><i class="fa fa-heart" aria-hidden="true"></i>&nbsp;
+                            Goodwill &
+                            Salutation</button></td>
+                </tr>
+                <tr>
+                    <td><button disabled class='rewardbtn'><i class="fa fa-home" aria-hidden="true"></i>&nbsp; Install
+                            Solar
+                            Panels</button></td>
+                </tr>
+                <tr>
+                    <td><button style="background-color:#292655;color:#ffffff;" class='rewardbtn'><i style="color:#292655;background-color:#ffffff;"
+                                class="fa fa-recycle" aria-hidden="true"></i>&nbsp; E-Waste Disposal</button></td>
+                </tr>
+                <tr>
+                    <td><button disabled class='rewardbtn'><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;
+                            Bring
+                            Your Bag</button></td>
+                </tr>
+                <tr>
+                    <td style="text-align:center; font-size:xx-large; margin-top:-10px;"><i style="color: #292655;background-color: transparent;margin-top: -15px;"
+                            class="fa fa-sort-desc" aria-hidden="true"></i></td>
+                </tr>
+            </table>
+        </div>
+        <div style="float:right; position:relative;margin-top: 2%;">
+            <h1 style="color:#292655;font-weight: bold">How does it work? </h1>
+            <h2 style="color:#292655;    margin-top: -15px;font-weight: unset;"><u>E-Waste Disposal</u></h2>
+            <div><img width="80%" style="margin-bottom: 50px;" src="Rewards _ How it works.png" /></div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width: 80%;">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5" style="margin-bottom:10px;">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <input style="display:unset;    width: 94%;" type="text" placeholder="User-name" id="username"
+                            class="form-control validate">
+                    </div>
+
+                    <div class="md-form mb-4">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <input style="display:unset;width: 94%;" type="password" placeholder="password" id="password"
+                            class="form-control validate">
+                    </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center" style="text-align:center" id="loginbtn">
+                    <p id='errormsg' style='color:red;display:none'> Login failed </p><button class="btn btn-default">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <img id="footerimg" src="Footer_Shape1.PNG" />
+        <div style="margin-top: -25%;">
+            <div style="float: left; position:relative">
+                <table cellspacing="1" cellpadding="1" style="color:#ffffff;border-spacing: 5px;">
+                    <th style="padding-right: 80px;">
+                        <h3>Help &amp; Support</h3>
+                    </th>
+                    <th style="padding-right: 80px;">
+                        <h3>BigAppleCoin</h3>
+                    </th>
+                    <th>
+                        <h3>NYC</h3>
+                    </th>
+                    <tr>
+                        <td>Help Center</td>
+                        <td>About us</td>
+                        <td>Help Center</td>
+                    </tr>
+                    <tr>
+                        <td>Security</td>
+                        <td>Press release</td>
+                        <td>Security</td>
+                    </tr>
+                    <tr>
+                        <td>FAQs</td>
+                        <td>Open source</td>
+                        <td>Settings</td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>Legal &amp; Privacy</td>
+                        <td>Status</td>
+                    </tr>
+                    <tr>
+                        <td>Resources</td>
+                        <td>Support</td>
+                        <td>Location</td>
+                    </tr>
+                    <tr>
+                        <td>How BigAppleCoin works</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="footersupport">
+                <h1 style="color:#292655; font-size: 70px;margin-top: -15px;">NYC</h1>
+                <p style="margin-top: -25px;">support@bigapplecoin.com</p>
+                <p>311</p>
+            </div>
+            <!-- <div id="helpdiv">
+                <h1>Help and Support</h1>
+            </div>
+            <div id="bigapplediv">
+                <h1>BigAppleCoin</h1>
+            </div>
+            <div id="nycdiv">
+                <h1>NYC</h1>
+            </div> -->
+        </div>
+    </div>
+</body>
+<!-- <footer style="background-image: url('Footer_Shape.png')">
+
+</footer> -->
+
+</html>
