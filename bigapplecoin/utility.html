@@ -210,6 +210,7 @@
             color: #292655;
             float: right;
             position: relative;
+            padding-right:10%;
         }
         .fa-bars{
             background-color: white;
@@ -225,7 +226,16 @@
                 display: block;
             }
         }
-
+        @media screen and (max-width: 980px) {
+            #footerContent{
+                font-size:small;
+            }
+        }
+        @media screen and (max-width: 700px) {
+            #footerContent{
+                font-size:x-small;
+            }
+        }
         @media screen and (max-width: 600px) {
             .topnav.responsive {
                 position: relative;
@@ -440,7 +450,7 @@
                 </table>
             </div>
             <div id="footersupport">
-                <h1 style="color:#292655; font-size: 70px;margin-top: -15px;">NYC</h1>
+                <h1 style="color:#292655; font-size: 60px;margin-top: -15px;">NYC</h1>
                 <p style="margin-top: -25px;">support@bigapplecoin.com</p>
                 <p>311</p>
             </div>
