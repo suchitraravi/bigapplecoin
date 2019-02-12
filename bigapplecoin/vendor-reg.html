@@ -64,7 +64,10 @@
             margin-top: -82px;
             height: 130px;
         }
-
+        
+        button:hover{
+            cursor: pointer;
+        }
         #headline {
             color: white;
             padding: 0px !important;
@@ -77,7 +80,14 @@
             font-weight: bold;
             font-size: 50px;
         }
-
+        .inputbtn{
+            padding: 10px;
+            margin-top: -10px;
+            border-radius: 10px;
+            border: 1px solid #292655;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
         .rewardbtn {
             border-radius: 10px;
             padding: 8px;
@@ -100,12 +110,10 @@
         hr {
             border-top: 2px solid #292655;
         }
-        button:hover{
-            cursor: pointer;
-        }
+
         #footerimg {
             width: 100%;
-            margin-top: -11px;
+            
         }
 
         #learnmore {
@@ -117,6 +125,7 @@
             padding: 10px;
             width: 150px;
             font-weight: bolder;
+            margin-top: -20px;
             font-size: unset;
         }
 
@@ -128,7 +137,7 @@
             position: relative;
             padding-left: 10%;
             color: #ffffff;
-            text-align: center;
+            text-align: -webkit-center;
             margin-left: -70%;
 
         }
@@ -155,7 +164,7 @@
 
         #bgimg {
             width: 100%;
-            margin-top: -170px;
+            margin-top: -200px;
             margin-bottom: -200px;
 
         }
@@ -230,17 +239,17 @@
         .topnav .icon {
             display: none;
         }
-
-        #footersupport {
-            color: #292655;
-            float: right;
-            position: relative;
-            padding-right:10%
-        }
         .fa-bars{
             background-color: white;
             color: #292655;
         }
+        #footersupport {
+            color: #292655;
+            float: right;
+            position: relative;
+            padding-right:10%;
+        }
+
         @media screen and (max-width: 600px) {
             .topnav a:not(:first-child) {
                 display: none;
@@ -251,7 +260,6 @@
                 display: block;
             }
         }
-        
         @media screen and (max-width: 980px) {
             #footerContent{
                 font-size:small;
@@ -277,6 +285,24 @@
         }
     </style>
     <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+        function loginfn(elem) {
+            if (sessionStorage.getItem('username') == '' || sessionStorage.getItem('username') == undefined) {
+                $('#modalLoginForm').modal('show');
+            }
+           
+        }
+        function logoutfn(elem){
+            sessionStorage.clear();
+            window.location.reload();                     
+        }
         $(function () {
             if(sessionStorage.getItem('username') == '' || sessionStorage.getItem('username') == undefined) {
                 $('#signusericon')[0].className = 'fas fa-sign-in-alt';
@@ -296,9 +322,9 @@
                     sessionStorage.setItem("login",'yes');
                     sessionStorage.setItem("username",'Jondoe');
                     $('#modalLoginForm').css('display','none');
-                    $('.modal-backdrop.in').css('display','none');                     
+                    $('.modal-backdrop.in').css('display','none');          
                     window.location.reload();                     
-
+           
                 }
                 else{
                     $('#errormsg').css(
@@ -306,25 +332,29 @@
                     )
                 }
             })
-        })
-        function loginfn(elem) {
-            if (sessionStorage.getItem('username') == '' || sessionStorage.getItem('username') == undefined) {
-                $('#modalLoginForm').modal('show');
+            
+            $('#vendorReg').click(function () {
+                $('#citizenDiv').css('display',"none");
+                $('#vendorDiv').css('display',"block");
+                $('#vendorReg').css('background-color','#292655')
+                $('#vendorReg').css('color','#ffffff')
+               
+                $('#citizenReg').css('background-color','#ffffff')
+                $('#citizenReg').css('color','#292655')
+            });
+            $('#citizenReg').click(function() {
+                $('#vendorDiv').css('display',"none");
+                $('#citizenDiv').css('display',"block");
+                $('#citizenReg').css('background-color','#292655')
+                $('#citizenReg').css('color','#ffffff')
+              
+                $('#vendorReg').css('background-color','#ffffff')
+                $('#vendorReg').css('color','#292655')
+            });
+            if(sessionStorage.regBtn == "citizen"){
+                $("#citizenReg").trigger("click");
             }
-           
-        }
-        function logoutfn(elem){
-            sessionStorage.clear();
-            window.location.reload();                     
-        }
-        function myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
-        }
+        });
         function transactionClick(elem){
             if(sessionStorage.login == "yes"){
                 if(elem.text == "Wallet"){
@@ -337,15 +367,15 @@
                 alert("Please login to view the Wallet and Settings")
             }
         }
-        
+    
     </script>
 </head>
 
 <body>
     <div class="topnav" id="myTopnav">
         <a style="width: 150px;color: #292655;font-size: x-large;font-weight: 500;padding-bottom: unset;padding-top: 5px;" href="bigapple.html">NYC</a>
-        <a href="vendor-reg.html">Registration</a>
-        <a href="reward.html" class="active">Reward</a>
+        <a href="vendor-reg.html" class="active">Registration</a>
+        <a href="reward.html">Reward</a>
         <a href="utility.html">Utility</a>
         <a onclick="transactionClick(this)">Wallet</a>
         <div id="dropdownchange" style="float: right;" >
@@ -368,56 +398,117 @@
     </div>
     <div style="padding-bottom: 50px; background-color: lightgrey;">
     </div>
+
     <div>
-        <div id="rewards">
-
-            <h1 style="margin-block-start: 0em;" id="rewardTitle">Rewards</h1>
-            <h2 id='rewardh2'>Create a Reward/Loyalty coin for <br /> use by NYC Government.</h2>
-            <a href="#how-it-works"><button id="learnmore">Learn more &nbsp;<i style="color: #292655; background-color:transparent;"
-                        class="fa fa-caret-right"></i></button></a>
-
-        </div>
-        <img id="bgimg" src="Utility Page_Shape.png" />
-    </div>
-    <div id="how-it-works">
         <div style="float:left; position:relative;margin-left: 5%;margin-top: 12%;">
             <table>
                 <th style="text-align: center;font-size: xx-large;color: #292655;">
-                    Rewards
+                    Registration
                 </th>
+
                 <tr>
-                    <td><button disabled class='rewardbtn'><i class="fa fa-heart" aria-hidden="true"></i>&nbsp;
-                            Goodwill &
-                            Salutation</button></td>
+                    <td><button id="vendorReg" style="background-color:#292655;color:#ffffff;" class='rewardbtn'><i
+                                class="fa fa-user"></i>&nbsp;Vendor
+                            Registration</button></td>
                 </tr>
                 <tr>
-                    <td><button disabled class='rewardbtn'><i class="fa fa-home" aria-hidden="true"></i>&nbsp; Install
-                            Solar
-                            Panels</button></td>
-                </tr>
-                <tr>
-                    <td><button style="background-color:#292655;color:#ffffff;" class='rewardbtn'><i style="color:#292655;background-color:#ffffff;"
-                                class="fa fa-recycle" aria-hidden="true"></i>&nbsp; E-Waste Disposal</button></td>
-                </tr>
-                <tr>
-                    <td><button disabled class='rewardbtn'><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;
-                            Bring
-                            Your Bag</button></td>
-                </tr>
-                <tr>
-                    <td style="text-align:center; font-size:xx-large; margin-top:-10px;"><i style="color: #292655;background-color: transparent;margin-top: -15px;"
-                            class="fa fa-sort-desc" aria-hidden="true"></i></td>
+                    <td><button id="citizenReg" class='rewardbtn'><i class="fa fa-user-circle"></i> Citizen
+                            Registration</button></td>
                 </tr>
             </table>
+            <hr />
         </div>
-        <div style="float:right; position:relative;margin-top: 2%;">
-            <h1 style="color:#292655;font-weight: bold">How does it work? </h1>
-            <h2 style="color:#292655;    margin-top: -15px;font-weight: unset;"><u>E-Waste Disposal</u></h2>
-            <div><img width="80%" style="margin-bottom: 50px;" src="Rewards _ How it works.png" /></div>
+
+        <div id='vendorDiv' style="float:right; position:relative;margin-top: 2%;text-align: center;border-left-color:#292655;border-left-style: solid;border-width: 2px;padding-left: 50px;margin-right: 35px;">
+            <h1 style="color:#292655;">Vendor Registration</h1>
+            <h2 style="color:#292655;    margin-top: -10px;font-weight: unset;">Sign Up</h2>
+            <div>
+                <table>
+                    <th style="color: #292655;">
+                        <h2>Business Name:</h2><input class="inputbtn" type="text" placeholder="Lorem ipsum" />
+                    </th>
+                    <th style="color: #292655;">
+                        <h2>Website:</h2><input class="inputbtn" type="text" placeholder="Lorem ipsum" />
+                    </th>
+                    <tr style="color: #292655;">
+                        <td>
+                            <h2>Name of person submitting information:</h2><input style="width: 455px;" class="inputbtn"
+                                type="text" placeholder="Lorem ipsum" />
+                        </td>
+                    </tr>
+                    <tr style="color: #292655;">
+                        <td>
+                            <h2>E-mail ID:</h2><input class="inputbtn" type="email" placeholder="Lorem ipsum" />
+                        </td>
+                        <td>
+                            <h2>Phone Number:</h2><input class="inputbtn" type="number" placeholder="Lorem ipsum" />
+                        </td>
+                    </tr>
+                    <tr style="color: #292655;">
+                        <td>
+                            <h2>Password:</h2><input class="inputbtn" type="password" placeholder="Lorem ipsum" />
+                        </td>
+                        <td>
+                            <h2>Re-type Password:</h2><input class="inputbtn" type="password" placeholder="Lorem ipsum" />
+                        </td>
+                    </tr>
+                    <tr style="color: #292655;">
+                        <td>
+                            <h2>Industry:</h2><input class="inputbtn" type="text" placeholder="Lorem ipsum" />
+                        </td>
+                        <td>
+                            <h2>Sub Industry:</h2><input class="inputbtn" type="text" placeholder="Lorem ipsum" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="success.html"><button style="background-color:#292655;color:#ffffff;width: 135px;text-align: center;margin-bottom: 25px;"
+                                    class='rewardbtn'>Get Started</button></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id='citizenDiv' style="display:none;float:right; position:relative;margin-top: 2%;text-align: center;border-left-color:#292655;border-left-style: solid;border-width: 2px;margin-right: 35px;">
+            <h1 style="color:#292655;">Citizen Registration</h1>
+            <h2 style="color:#292655;    margin-top: -10px;font-weight: unset;">Sign Up</h2>
+            <div style="padding-left:115px;">
+                <table>
+                    <th style="color: #292655;">
+                        <h2>Full Name:</h2><input style="margin-right:120px;" class="inputbtn" type="text" placeholder="Lorem ipsum" />
+                    </th>
+                    <th style="color: #292655;">
+                        <h2>E Mail:</h2><input style="margin-right: 167px;" class="inputbtn" type="email" placeholder="Lorem ipsum" />
+                    </th>
+
+                    <tr style="color: #292655;">
+                        <td>
+                            <h2>Username:</h2><input class="inputbtn" type="text" placeholder="Lorem ipsum" />
+                        </td>
+                        <td>
+                            <h2>Password:</h2><input class="inputbtn" type="password" placeholder="Lorem ipsum" />
+                        </td>
+                    </tr>
+                    <tr style="color: #292655;">
+                        <td>
+                            <h2>Phone Number:</h2><input class="inputbtn" type="number" placeholder="Lorem ipsum" />
+                        </td>
+                    </tr>
+                    <tr style="color: #292655;">
+                        <td>
+                            <h2 style="margin-bottom: 60px;">What you do? </h2>
+                        </td>
+                        <td><input type="checkbox" name="vehicle" value="student"> Student<br>
+                            <input type="checkbox" name="vehicle" value="employed"> Employed<br>
+                            <input type="checkbox" name="vehicle" value="unemployed"> Unemployed<br>
+                    </tr>
+                    <tr>
+                        <td><a href="success.html"><button style="background-color:#292655;color:#ffffff;width: 135px;text-align: center;margin-bottom: 25px;"
+                                    class='rewardbtn'>Submit</button></a></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-
-
 
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -448,6 +539,8 @@
             </div>
         </div>
     </div>
+
+
 
 
     <div>

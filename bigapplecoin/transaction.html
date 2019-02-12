@@ -11,12 +11,23 @@
     <script>
 
         $(function () {
+            if(sessionStorage.getItem('username') == '' || sessionStorage.getItem('username') == undefined) {
+                $('#signusericon')[0].className = 'fas fa-sign-in-alt';
+                $('#signinusername')[0].textContent = 'Log in';
+                $('#dropdownchange')[0].className = 'dropdowne';
+            }
+            else{
+                $('#signusericon')[0].className = 'fas fa-user';
+                $('#signinusername')[0].textContent = 'Hi ' + sessionStorage.getItem('username');
+                $('#dropdownchange')[0].className = 'dropdown';
+            }
             $('#loginbtn').click(function() {
                 if($('#username').val() == 'jondoe' && $('#password').val() == 'pass123'){
                     $('#errormsg').css(
                         'display','none'
                     )
-                    localStorage.setItem("login",'yes');
+                    sessionStorage.setItem("login",'yes');
+                    sessionStorage.setItem("username",'Jondoe');
                     $('#modalLoginForm').css('display','none');
                     $('.modal-backdrop.in').css('display','none');                     
                     window.location.reload();                     
@@ -29,8 +40,18 @@
                 }
             })
         })
+        function loginfn(elem) {
+            if (sessionStorage.getItem('username') == '' || sessionStorage.getItem('username') == undefined) {
+                $('#modalLoginForm').modal('show');
+            }
+           
+        }
+        function logoutfn(elem){
+            sessionStorage.clear();
+            window.location.reload();                     
+        }
         function transactionClick(elem){
-            if(localStorage.login == "yes"){
+            if(sessionStorage.login == "yes"){
                 if(elem.text == "Wallet"){
                     window.location.href = 'transaction.html';
                 } else{
@@ -84,6 +105,32 @@
     </style>
 
     <style>
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        
+        .dropdown .dropbtn {
+            font-size: 16px; 
+            border: none;
+            outline: none;
+            color: #292655;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+        .dropdown-content {
+            display: none;
+            position: fixed;
+            margin-top: 50px;
+            background-color: white;
+            padding-right: 15px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
         body {
             margin: 0;
             font-family: 'Raleway', sans-serif;
@@ -341,6 +388,7 @@
         }
     </style>
     <script>
+       
         function myFunction() {
             var x = document.getElementById("myTopnav");
             if (x.className === "topnav") {
@@ -362,8 +410,15 @@
         <a href="reward.html">Reward</a>
         <a href="utility.html">Utility</a>
         <a onclick="transactionClick(this)" class="active">Wallet</a>
-        <a style="float:right;padding-bottom: 0px;" href="" data-toggle="modal" data-target="#modalLoginForm"><img
-                width="50px" src="login.png" /></a>
+        <div id="dropdownchange" style="float: right;" >
+                <a class="dropbtn" id="name" style="float:right;padding-bottom: 0px;" onclick="loginfn(this)">
+                    <i id="signusericon" ></i>
+                    <p id="signinusername" style="margin:0;"></p>
+                </a>
+                <div class="dropdown-content">
+                    <a onclick="logoutfn(this)">Log out</a>
+                </div>
+            </div>
         <a style="float:right;opacity:0.5;" onclick="return false;" href="#chat"><i style="background-color: white;color: #292655;"
                 class="fa fa-comments" aria-hidden="true"></i></a>
         <a style="float:right" onclick="transactionClick(this)"><i style="background-color: white;color: #292655;"
